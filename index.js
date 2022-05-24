@@ -27,7 +27,7 @@ async function run() {
             res.send(services);
         });
 
-        // for get single item
+        // this route for get single item
         app.get('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
