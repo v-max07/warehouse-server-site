@@ -23,22 +23,22 @@ async function run() {
         app.get('/inventory', async (req, res) => {
             const query = {};
             const cursor = inventoryCollection.find(query);
-            const services = await cursor.toArray();
-            res.send(services);
+            const inventoryItems = await cursor.toArray();
+            res.send(inventoryItems);
         });
 
         // this route- for get single item
         app.get('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
-            const service = await inventoryCollection.findOne(query);
-            res.send(service);
+            const inventoryItem = await inventoryCollection.findOne(query);
+            res.send(inventoryItem);
         });
 
         // POST
         app.post('/inventory', async (req, res) => {
-            const newService = req.body;
-            const result = await inventoryCollection.insertOne(newService);
+            const newItem = req.body;
+            const result = await inventoryCollection.insertOne(newItem);
             res.send(result);
         });
 
